@@ -9,12 +9,14 @@ Download a [release](https://github.com/juliojimenez/piccolo/releases) (recommen
 ```bash
 wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.3.tar.gz -O piccolo.tar.gz
 tar -xvzf piccolo.tar.gz
+cd piccolo-0.0.3
 ```
 
 Clone the repository (may be unstable)
 
 ```bash
 git clone https://github.com/juliojimenez/piccolo
+cd piccolo
 ```
 
 piccolo requires QuickLisp in order to install dependencies. You can check by using `make ql-check`.
@@ -26,7 +28,12 @@ Quicklisp is missing. Run make ql-install.
 
 To install QuickLisp, run `make ql-install`. Then run `make ql-check` again to verify the installation.
 
+```bash
+make ql-check 
+Quicklisp is installed.
+```
 
+Now let's create a binary we can use by running `make build`
 
 ## Contributing
 
