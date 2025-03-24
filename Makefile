@@ -8,4 +8,8 @@ build:
 clean:
 	rm -f $(OUTPUT_BINARY)
 
-.PHONY: build clean
+ql-check:
+	@$(SBCL) --non-interactive --eval "(or (find-package 'ql) (progn (format t \"Quicklisp is not installed.~%\") (sb-ext:exit :code 1)))" >/dev/null 2>&1 && echo "Quicklisp is installed." || echo "Quicklisp is missing. Install it first."
+
+
+.PHONY: build clean ql-check
