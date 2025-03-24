@@ -4,7 +4,7 @@ piccolo is a simple CLI Gopher client written in Common Lisp.
 
 ## Installation
 
-Download a release (recommended)
+Download a [release](https://github.com/juliojimenez/piccolo/releases) (recommended)
 
 ```bash
 wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.2.tar.gz -O piccolo.tar.gz
