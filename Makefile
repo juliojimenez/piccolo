@@ -11,5 +11,11 @@ clean:
 ql-check:
 	@$(SBCL) --non-interactive --eval "(or (find-package 'ql) (progn (format t \"Quicklisp is not installed.~%\") (sb-ext:exit :code 1)))" >/dev/null 2>&1 && echo "Quicklisp is installed." || echo "Quicklisp is missing. Run make ql-install."
 
+ql-install:
+	curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
+	$(SBCL) --no-sysinit --no-userinit --load /tmp/ql.lisp \
+		--eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
+		--eval '(ql:add-to-init-file)' \
+		--quit
 
-.PHONY: build clean ql-check
+.PHONY: build clean ql-check ql-install
