@@ -9,7 +9,7 @@ clean:
 	rm -f $(OUTPUT_BINARY)
 
 ql-check:
-	@$(SBCL) --non-interactive --eval "(or (find-package 'ql) (progn (format t \"Quicklisp is not installed.~%\") (sb-ext:exit :code 1)))" >/dev/null 2>&1 && echo "Quicklisp is installed." || echo "Quicklisp is missing. Install it first."
+	@$(SBCL) --non-interactive --eval "(or (find-package 'ql) (progn (format t \"Quicklisp is not installed.~%\") (sb-ext:exit :code 1)))" >/dev/null 2>&1 && echo "Quicklisp is installed." || echo "Quicklisp is missing. Run make ql-install."
 
 
 .PHONY: build clean ql-check
