@@ -16,7 +16,9 @@ ql-install:
 	$(SBCL) --non-interactive --no-sysinit --no-userinit \
 		--load /tmp/ql.lisp \
 		--eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
-		--eval '(ql:add-to-init-file)' \
+		--eval '(with-open-file (s "~/.sbclrc" :direction :output :if-exists :append :if-does-not-exist :create)
+		           (format s "~%# Load Quicklisp~%") 
+		           (format s "(load \\"~/.quicklisp/setup.lisp\\")~%"))' \
 		--quit
 
 .PHONY: build clean ql-check ql-install
