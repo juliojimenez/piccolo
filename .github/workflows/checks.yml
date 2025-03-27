@@ -35,7 +35,7 @@ jobs:
 
       - name: make ql-check-ci
         run: make ql-check-ci
-   build:
+  build:
     runs-on: ubuntu-latest
     name: make build
     steps:
