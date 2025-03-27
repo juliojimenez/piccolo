@@ -35,6 +35,19 @@ Quicklisp is installed.
 
 Now let's create a binary we can use by running `make build`
 
+## Burrowing The Gopherspace
+
+Start piccolo with or without a `gopher://` URI.
+
+```bash
+./piccolo
+./piccolo gopher://gopher.quux.org
+```
+
+If no URI is provided, piccolo will start at `gopher://gopher.quux.org`.
+
+Each item associated with an item type has a line number. To navigate to an item, just input its line number into the prompt and press `[ENTER]`.
+
 ## Contributing
 
 Please do! I don't know what I'm doing. 😅
