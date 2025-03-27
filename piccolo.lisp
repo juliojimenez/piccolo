@@ -3,7 +3,7 @@
 (defpackage :piccolo
   (:use :common-lisp :usocket)
   (:nicknames :p)
-  (:export :run))
+  (:export :run :run-with-args))
 
 (in-package :piccolo)
 
@@ -101,6 +101,39 @@
                
                (t (format t "Unsupported type: ~A~%" type)))))
           (t (format t "Invalid choice, try again.~%")))))))
+
+(defun parse-gopher-url (url)
+  "Parse a Gopher URL and return (host selector port) with defaults."
+  (let* ((gopher-uri (quri:uri url))
+         (scheme (quri:uri-scheme gopher-uri))
+         (host (quri:uri-host gopher-uri))
+         (port (quri:uri-port gopher-uri))
+         (selector (quri:uri-path gopher-uri)))
+    (values
+     (string= scheme "gopher")
+     (if (> (length host) 0)
+         host 
+         nil)
+     (if port
+         (parse-integer port :junk-allowed t)
+         70)
+     (if selector
+         selector
+         "/"))))
+
+(defun run-with-args ()
+    "Entry point for Piccolo with command-line argument handling."
+    (let ((args (uiop:command-line-arguments)))
+      (if (and args (not (string= (first args) "")))
+          (multiple-value-bind (scheme host port selector) (parse-gopher-url (first args))
+            (if scheme
+                (if host
+                    (progn
+                      (format t "Connecting to ~A on port ~A with selector ~A~%" host port selector)
+                      (navigate-gopher host selector))
+                    (format t "Malformed host."))
+                (format t "Only gopher:// URI scheme is supported." scheme)))
+          (piccolo:run))))
 
 (defun run ()
   "Start the piccolo CLI Gopher client."
