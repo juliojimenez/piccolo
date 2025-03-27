@@ -14,7 +14,7 @@ ql-check:
 
 ql-check-ci:
 	@$(SBCL) --non-interactive \
-	         --eval '(handler-case (progn (load "~/.quicklisp/setup.lisp") (format t "Quicklisp is installed.~%")) (error () (format t "Quicklisp is missing.~%") (sb-ext:exit :code 1)))'
+	         --eval '(handler-case (progn (load "~~/.quicklisp/setup.lisp") (format t "Quicklisp is installed.~%")) (error () (format t "Quicklisp is missing.~%") (sb-ext:exit :code 1)))'
 
 ql-install:
 	curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
