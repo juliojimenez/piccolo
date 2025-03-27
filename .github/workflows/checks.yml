@@ -4,9 +4,9 @@ on:
   push:
 
 jobs:
-  ql_check:
+  ql_check_missing:
     runs-on: ubuntu-latest
-    name: make ql-check
+    name: make ql-check (missing)
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
