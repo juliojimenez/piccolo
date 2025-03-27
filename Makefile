@@ -1,4 +1,4 @@
-/SBCL=sbcl
+SBCL=sbcl
 BUILD_SCRIPT=build.lisp
 OUTPUT_BINARY=piccolo
 
