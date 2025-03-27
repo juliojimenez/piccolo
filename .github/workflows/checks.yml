@@ -16,5 +16,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sbcl
 
-      - name: Run ql-check
+      - name: make ql-check
+        run: make ql-check
+  ql_install:
+    runs-on: ubuntu-latest
+    name: make ql-install
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install SBCL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sbcl
+
+      - name: make ql-install
+        run: make ql-install
+
+      - name: make ql-check
         run: make ql-check
