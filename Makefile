@@ -13,6 +13,14 @@ ql-check:
 
 ql-install:
 	curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
+	$(SBCL) --no-sysinit --no-userinit \
+		--load /tmp/ql.lisp \ 
+		--eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
+		--eval '(ql:add-to-init-file)' \
+		--quit
+
+ql-install-ci:
+	curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
 	$(SBCL) --non-interactive --no-sysinit --no-userinit \
 		--load /tmp/ql.lisp \
 		--eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
@@ -21,4 +29,4 @@ ql-install:
 		           (format s "(load \\"~/.quicklisp/setup.lisp\\")~%"))' \
 		--quit
 
-.PHONY: build clean ql-check ql-install
+.PHONY: build clean ql-check ql-install ql-install-ci
