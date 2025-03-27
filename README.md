@@ -56,7 +56,8 @@ Please do! I don't know what I'm doing. 😅
 
 I've tested piccolo on:
 
-- macOS 15.3.2+, SBCL 2.4.8+
+- macOS M1 15.3.2+, SBCL 2.4.8+
+- Linux 4.16.18-galliumos, SBCL 1.4.5+
 
 ## Troubleshooting
 
