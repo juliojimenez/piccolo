@@ -1,0 +1,20 @@
+name: Status Check
+
+on:
+  push:
+
+jobs:
+  ql_check:
+    runs-on: ubuntu-latest
+    name: make ql-check
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install SBCL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sbcl
+
+      - name: Run ql-check
+        run: make ql-check
