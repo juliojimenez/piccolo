@@ -30,8 +30,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sbcl
 
-      - name: make ql-install
-        run: make ql-install
+      - name: make ql-install-ci
+        run: make ql-install-ci
 
       - name: make ql-check
         run: make ql-check
