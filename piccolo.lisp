@@ -97,7 +97,9 @@
                ((string= type "0")
                 (format t "~%--- File Contents ---~%")
                 (format t "~A~%" (fetch-gopher new-host new-selector))
-                (format t "~%--- End of File ---~%"))
+                (format t "~%--- End of File ---~%")
+                (format t "~%Press Enter to return to menu...~%")
+                (read-line))
                
                (t (format t "Unsupported type: ~A~%" type)))))
           (t (format t "Invalid choice, try again.~%")))))))
