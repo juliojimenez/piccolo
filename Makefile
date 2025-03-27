@@ -1,4 +1,4 @@
-SBCL=sbcl
+/SBCL=sbcl
 BUILD_SCRIPT=build.lisp
 OUTPUT_BINARY=piccolo
 
@@ -13,7 +13,8 @@ ql-check:
 
 ql-install:
 	curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
-	$(SBCL) --no-sysinit --no-userinit --load /tmp/ql.lisp \
+	$(SBCL) --non-interactive --no-sysinit --no-userinit \
+		--load /tmp/ql.lisp \
 		--eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
 		--eval '(ql:add-to-init-file)' \
 		--quit
