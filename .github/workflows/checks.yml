@@ -34,4 +34,6 @@ jobs:
         run: make ql-install-ci
 
       - name: make ql-check
-        run: make ql-check
+        run: |
+          cat ~/.sbclrc
+          make ql-check
