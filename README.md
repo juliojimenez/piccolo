@@ -48,6 +48,8 @@ If no URI is provided, piccolo will start at `gopher://gopher.quux.org`.
 
 Each item associated with an item type has a line number. To navigate to an item, just input its line number into the prompt and press `[ENTER]`.
 
+![Menu](./images/piccolo-menu.png)
+
 ## Contributing
 
 Please do! I don't know what I'm doing. 😅
