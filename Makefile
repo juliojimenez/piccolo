@@ -3,7 +3,7 @@ BUILD_SCRIPT=build.lisp
 OUTPUT_BINARY=piccolo
 
 build:
-	$(SBCL) --eval "(ql:quickload '(:usocket :cl-ppcre :split-sequence :quri))" --load start.lisp --eval "(sb-ext:save-lisp-and-die #p\"piccolo\" :toplevel #'piccolo:run-with-args :executable t)"
+	$(SBCL) --eval "(ql:quickload '(:usocket :cl-ppcre :split-sequence :quri :sqlite))" --load start.lisp --eval "(sb-ext:save-lisp-and-die #p\"piccolo\" :toplevel #'piccolo:run-with-args :executable t)"
 
 clean:
 	rm -f $(OUTPUT_BINARY)

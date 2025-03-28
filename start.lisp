@@ -3,6 +3,7 @@
 (load "menu.lisp")
 (load "nav.lisp")
 (load "utils.lisp")
+(load "db.lisp")
 (load "main.lisp")
 
 (format t "~%All modules loaded.~%")

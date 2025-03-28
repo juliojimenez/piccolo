@@ -2,6 +2,11 @@
 
 piccolo is a simple CLI Gopher client written in Common Lisp.
 
+## Dependencies
+
+- [SBCL](https://lisp-lang.org/learn/getting-started/) >= v1.4.5
+- [SQLite](https://www.sqlite.org/index.html)
+
 ## Installation
 
 Download a [release](https://github.com/juliojimenez/piccolo/releases) (recommended)
