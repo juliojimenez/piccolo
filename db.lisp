@@ -75,5 +75,5 @@
                                           "SELECT value FROM settings WHERE key = ? LIMIT 1;"
                                           key)))
       (if result
-          (second (first result))  ; get the value
+          (first (first result))  ; get the value
           default))))

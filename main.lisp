@@ -1,9 +1,12 @@
 (in-package :piccolo)
 
 (defun run ()
-    "Start the piccolo CLI Gopher client."
-    (format t "Welcome to piccolo - CLI Gopher Client~%")
-    (navigate-gopher "gopher.quux.org" "/"))
+  "Start the piccolo CLI Gopher client."
+  (format t "Welcome to piccolo - CLI Gopher Client~%")
+  (multiple-value-bind (scheme host port selector) (parse-gopher-url (piccolo::get-setting "home"))
+    (if (and scheme port)
+        (navigate-gopher host selector))))
+     
 
 (defun run-with-args ()
     "Entry point for Piccolo with command-line argument handling."
