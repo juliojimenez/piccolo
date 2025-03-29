@@ -6,4 +6,6 @@
 (load "db.lisp")
 (load "main.lisp")
 
-(format t "~%All modules loaded.~%")
+(p::init-db)
+
+(format t "~%All modules loaded.~%Database initialized.~%")
