@@ -25,4 +25,5 @@
             do (vector-push-extend char response))
       ;; Print full response (for debugging)
       ;; (format t "Full Response (~A bytes):~%~A~%" (length response) response)
+      (piccolo::add-to-history host port selector)
       (coerce response 'string))))  ;; Convert array to string

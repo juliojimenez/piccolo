@@ -2,7 +2,7 @@
 
 (defun run ()
   "Start the piccolo CLI Gopher client."
-  (format t "Welcome to piccolo - CLI Gopher Client~%")
+  (format t "Welcome to piccolo - CLI Gopher Client ~A~%" *piccolo-version*)
   (multiple-value-bind (scheme host port selector) (parse-gopher-url (piccolo::get-setting "home"))
     (if (and scheme port)
         (navigate-gopher host selector))))

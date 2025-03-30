@@ -69,6 +69,15 @@
     (sqlite:execute-to-list db
                             "SELECT * FROM favorites ORDER BY name ASC;")))
 
+(defun get-max-history-id ()
+  "Return the largest INTEGER PRIMARY KEY from the given table."
+  (sqlite:with-open-database (db *db-path*)
+    (let ((result (sqlite:execute-to-list db
+                                          "SELECT MAX(id) FROM history;")))
+      (if (and result (first result))
+          (first (first result))
+          0))))  ; or NIL if you want to distinguish empty tables
+
 (defun get-setting (key &optional (default ""))
   (sqlite:with-open-database (db *db-path*)
     (let ((result (sqlite:execute-to-list db

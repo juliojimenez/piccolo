@@ -12,9 +12,9 @@ piccolo is a simple CLI Gopher client written in Common Lisp.
 Download a [release](https://github.com/juliojimenez/piccolo/releases) (recommended)
 
 ```bash
-wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.6.tar.gz -O piccolo.tar.gz
+wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.7.tar.gz -O piccolo.tar.gz
 tar -xvzf piccolo.tar.gz
-cd piccolo-0.0.6
+cd piccolo-0.0.7
 ```
 
 Clone the repository (may be unstable)
@@ -49,7 +49,7 @@ Start piccolo with or without a `gopher://` URI.
 ./piccolo gopher://gopher.quux.org
 ```
 
-If no URI is provided, piccolo will start at `gopher://gopher.quux.org`.
+If no URI is provided, piccolo will start at the configured home gopherspace. By default, it is `gopher://gopher.quux.org`.
 
 Each item associated with an item type has a line number. To navigate to an item, just input its line number into the prompt and press `[ENTER]`.
 
