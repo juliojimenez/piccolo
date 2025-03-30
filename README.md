@@ -1,3 +1,5 @@
+[![Status Checks](https://github.com/juliojimenez/piccolo/actions/workflows/checks.yml/badge.svg)](https://github.com/juliojimenez/piccolo/actions/workflows/checks.yml)
+
 # piccolo
 
 piccolo is a simple CLI Gopher client written in Common Lisp.
