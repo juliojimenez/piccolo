@@ -4,7 +4,7 @@
   "CLI Gopher browser loop."
   (loop
     (let ((menu (display-gopher-menu host selector)))
-      (format t "~%Enter choice (number), 'b' for back, or 'q' to quit: ")
+      (format t "~%Enter a number, (b)ack, or (h)elp: ")
       (force-output)
       (let ((input (read-line)))
         (cond
@@ -30,4 +30,8 @@
                 (read-line))
                
                (t (format t "Unsupported type: ~A~%" type)))))
+          ((string= input "h")
+           (show-help)
+           (format t "~%Press Enter to return to menu...~%")
+           (read-line))
           (t (format t "Invalid choice, try again.~%")))))))
