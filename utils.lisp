@@ -26,8 +26,7 @@
 
 (defun add-to-history (host port selector)
   (piccolo::save-history host port selector)
-  (setf *history-pointer* (piccolo::get-max-history-id))
-  (format t "History Pointer: ~A" *history-pointer*))
+  (setf *history-pointer* (piccolo::get-max-history-id)))
 
 (defun show-help ()
   (format t "~%Piccolo - CLI Gopher Client ~A~%~%" *piccolo-version*)
