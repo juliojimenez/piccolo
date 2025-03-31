@@ -14,9 +14,9 @@ piccolo is a simple CLI Gopher client written in Common Lisp.
 Download a [release](https://github.com/juliojimenez/piccolo/releases) (recommended)
 
 ```bash
-wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.7.tar.gz -O piccolo.tar.gz
+wget https://github.com/juliojimenez/piccolo/archive/refs/tags/v0.0.8.tar.gz -O piccolo.tar.gz
 tar -xvzf piccolo.tar.gz
-cd piccolo-0.0.7
+cd piccolo-0.0.8
 ```
 
 Clone the repository (may be unstable)
@@ -56,6 +56,32 @@ If no URI is provided, piccolo will start at the configured home gopherspace. By
 Each item associated with an item type has a line number. To navigate to an item, just input its line number into the prompt and press `[ENTER]`.
 
 ![Menu](./images/piccolo-menu.png)
+
+For a full listing of input options type `h` and `[ENTER]`.
+
+```
+Enter a number, (b)ack, or (h)elp: h
+
+Piccolo - CLI Gopher Client v0.0.8
+
+Command Line Usage:
+  piccolo [gopher://host[:port]/selector]
+
+Input Options:
+  [0-9]*  Navigate to a menu item
+  b       Back
+  f       Forward
+  o       Home
+  d       Favorite
+  q       Quit
+  h       Show this help
+
+Examples:
+  piccolo gopher://gopher.floodgap.com/
+  piccolo
+
+Press Enter to return to menu...
+```
 
 ## Contributing
 

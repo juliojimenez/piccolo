@@ -8,7 +8,6 @@
       (force-output)
       (let ((input (read-line)))
         (cond
-          ((string= input "q") (return))
           ((string= input "b") (setf selector "/"))  ;; Go back to root
           ((and (parse-integer input :junk-allowed t)
                 (<= (parse-integer input) (length menu)))
@@ -34,4 +33,9 @@
            (show-help)
            (format t "~%Press Enter to return to menu...~%")
            (read-line))
+          ((string= input "o")
+           (multiple-value-bind (scheme new-host port new-selector) (parse-gopher-url (piccolo::get-setting "home"))
+             (if (and scheme port)
+                 (setf host new-host selector new-selector))))
+          ((string= input "q") (return))
           (t (format t "Invalid choice, try again.~%")))))))
