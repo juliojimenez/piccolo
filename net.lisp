@@ -7,7 +7,7 @@
 ;       (format t "Failed to connect.~%")))
 
 ;;; Fetch data from a Gopher server
-(defun fetch-gopher (host selector &optional (port 70))
+(defun fetch-gopher (add-history host selector &optional (port 70))
   "Fetch data from a Gopher server properly, handling stream reads correctly."
   (format t "Connecting to ~A:~A...~%" host port)
   (usocket:with-client-socket (socket stream host port)
@@ -25,5 +25,6 @@
             do (vector-push-extend char response))
       ;; Print full response (for debugging)
       ;; (format t "Full Response (~A bytes):~%~A~%" (length response) response)
-      (piccolo::add-to-history host port selector)
+      (when add-history
+        (piccolo::add-to-history host port selector))
       (coerce response 'string))))  ;; Convert array to string

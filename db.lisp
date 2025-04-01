@@ -1,5 +1,8 @@
 (in-package :piccolo)
 
+(defparameter *history-pointer* 0 
+  "History pointer is used to keep track of where we are when going back and forward")
+
 (defparameter *db-path*
   (merge-pathnames "piccolo.db"
                    (merge-pathnames ".piccolo/"
@@ -49,6 +52,35 @@
     (sqlite:execute-non-query db
                               "INSERT INTO history (host, port, selector, visited_at) VALUES (?, ?, ?, datetime('now'));"
                               host port selector)))
+
+(defun get-entry-by-id (current-id)
+  "Fetch the host/port/selector for the given history ID."
+  (sqlite:with-open-database (db *db-path*)
+    (sqlite:execute-to-list db
+                            "SELECT host, port, selector FROM history WHERE id = ? LIMIT 1;"
+                            current-id)))
+
+(defun get-previous-unique-history (current-id)
+  "Step back to the previous unique Gopher entry before current-id."
+  (multiple-value-bind (current-host current-port current-selector)
+      (destructuring-bind ((host port selector))
+          (get-entry-by-id current-id)
+        (values host port selector))
+    (sqlite:with-open-database (db *db-path*)
+      (let ((result (sqlite:execute-to-list db
+                                            "SELECT MAX(id), host, port, selector
+                                             FROM history
+                                             WHERE id < ?
+                                               AND NOT (host = ? AND port = ? AND selector = ?)
+                                             GROUP BY host, port, selector
+                                             ORDER BY id DESC
+                                             LIMIT 1;"
+                                            current-id current-host current-port current-selector)))
+        (when result
+          (destructuring-bind (prev-id host port selector) (first result)
+            (setf *history-pointer* prev-id)
+            (format t "← Back to: gopher://~A:~A~A~%" host port selector)
+            (list prev-id host port selector)))))))
 
 (defun add-favorite (name host port selector)
   "Insert a favorite into the favorites table."

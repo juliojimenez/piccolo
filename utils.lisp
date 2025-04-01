@@ -2,9 +2,6 @@
 
 (defvar *piccolo-version* "v0.0.8")
 
-(defparameter *history-pointer* 0 
-  "History pointer is used to keep track of where we are when going back and forward")
-
 (defun parse-gopher-url (url)
   "Parse a Gopher URL and return (host selector port) with defaults."
   (let* ((gopher-uri (quri:uri url))
