@@ -19,9 +19,9 @@
                       (list :type type :name name :selector nil :host nil :port nil)
                       (list :type type :name name :selector selector :host host :port port)))))
 
-(defun display-gopher-menu (host selector)
+(defun display-gopher-menu (add-history host selector)
   "Fetch and display a Gopher menu in a readable format."
-  (let* ((data (fetch-gopher host selector))
+  (let* ((data (fetch-gopher add-history host selector))
          (menu-items (parse-gopher-menu data)))
     (format t "~%--- Gopher Menu from ~A ---~%~%" host)
     (loop for item in menu-items
